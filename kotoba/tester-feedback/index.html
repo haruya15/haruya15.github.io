@@ -19,7 +19,7 @@
 <div class="field"><label for="difficulty">一番迷った場所・内容</label><textarea id="difficulty" placeholder="例：ハングルの音の違いが分からなかった"></textarea></div>
 <div class="field"><label for="bug">見つけた不具合 <span class="hint">できれば再現手順も</span></label><textarea id="bug" placeholder="例：iPhoneで音声ボタンを押しても再生されない"></textarea></div>
 <div class="field"><label for="good">良かったところ</label><textarea id="good" placeholder="使いやすかった画面、分かりやすかった説明など"></textarea></div>
-<div class="field"><label for="improve">最初に直したほうがよいと思うところ</label><textarea id="improve" placeholder="できるだけ具体的に"></textarea></div>
+<div class="field"><label for="improve">追加で欲しい要素</label><textarea id="improve" placeholder="例：復習の通知、単語帳、お気に入り機能など"></textarea></div>
 <div class="actions"><button type="button" class="button" id="copy">回答をコピー</button><button type="button" class="button secondary" id="download">回答をテキスト保存</button></div>
 <p id="feedback" class="note" role="status" aria-live="polite"></p><pre class="result" id="output" tabindex="0"></pre></form>
 <p class="note" style="text-align:center">※ このフォームは回答内容をサーバーに収集・送信しません。名前はニックネームでも構いません。住所・電話番号・メールアドレスなどの入力は避けてください。</p></div>
@@ -28,7 +28,7 @@ const survey=document.getElementById('survey');
 for(const block of document.querySelectorAll('.rater')){
  const k=block.dataset.name;for(let i=1;i<=5;i++){const l=document.createElement('label');const a=document.createElement('input');a.type='radio';a.name=k;a.value=String(i);a.setAttribute('aria-label',k+' '+i+'点');const span=document.createElement('span');span.textContent=String(i);l.append(a,span);block.append(l);}
 }
-const fields=[['名前','tester'],['言語','language'],['経験','prior'],['端末','device'],['開始できたか','start'],['教材','lesson'],['答え方','guess'],['難しかった場所','difficulty'],['不具合','bug'],['良かったところ','good'],['改善してほしい点','improve']];
+const fields=[['名前','tester'],['言語','language'],['経験','prior'],['端末','device'],['開始できたか','start'],['教材','lesson'],['答え方','guess'],['難しかった場所','difficulty'],['不具合','bug'],['良かったところ','good'],['追加で欲しい要素','improve']];
 function makeText(){const val=(id)=>document.getElementById(id).value.trim();if(!val('tester')||!val('language')){document.getElementById('feedback').textContent='名前と言語を入力してください。';return null}
 let t='【ことばステップ テスト回答】\n';for(const [label,id] of fields)t+=label+'：'+(val(id)||'未回答')+'\n';for(const [label,key] of [['説明の分かりやすさ','clarity'],['文字・単語の理解','literacy'],['操作のしやすさ','usability'],['継続意向','intent']])t+=label+'：'+(survey.querySelector('input[name="'+key+'"]:checked')?.value||'未回答')+'/5\n';return t;}
 function show(t){const out=document.getElementById('output');out.textContent=t;out.classList.add('visible');}
