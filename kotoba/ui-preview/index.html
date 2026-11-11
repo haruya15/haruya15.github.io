@@ -168,7 +168,7 @@ body{margin:0;min-height:100vh;background:#f2f6ff}
 .ks-home-progressbar i{background:#f3f9ff}
 .ks-status{display:inline-flex;align-items:center;gap:4px;align-self:flex-start;
  padding:4px 7px;border-radius:8px;font-size:11px;line-height:1.3;font-weight:800;
- background:#eef1ff;color:#3e58bd}
+ background:#eef1f5;color:#53617a}
 .ks-status.ks-unmeasured{background:var(--ui-warning-soft);color:var(--ui-warning)}
 .ks-status.ks-measured{background:#eaf4ff;color:#285bb5}
 .ks-status.ks-mastered{background:var(--ui-success-soft);color:#0c755d}
@@ -628,7 +628,7 @@ const LANG={en:[FLAG.en,'英語','en-US'],ko:[FLAG.ko,'韓国語','ko-KR'],zh:[F
   const s=stat.perLevel[level-1],u=COURSE[data.lang][level-1];
   const pct=Math.round(100*s.sections/Math.max(1,s.totalSections));
   const selected=+data.focusLevel===level;
-  const status=s.mastered?'<span class="ks-status ks-mastered">✓ 習得済</span>':s.recent===null?'<span class="ks-status ks-unmeasured">◌ テスト未測定</span>':`<span class="ks-status ks-measured">直近正答 ${Math.round(s.recent*100)}%</span>`;
+  const status=s.mastered?'<span class="ks-status ks-mastered">✓ 習得済</span>':s.recent===null?`<span class="ks-status ${selected?'ks-unmeasured':''}">◌ テスト未測定</span>`:`<span class="ks-status ks-measured">直近正答 ${Math.round(s.recent*100)}%</span>`;
   return `<button type="button" class="ks-stage ks-lvcard ${selected?'ks-focus':''}" data-act="focus" data-level="${level}" aria-pressed="${selected}" aria-label="レベル${level} ${esc(u.title)}、${s.sections}/${s.totalSections}セクション完了、${s.recent===null?'テスト未測定':`直近正答${Math.round(s.recent*100)}%`}">
    <span class="ks-leveltext">Lv.${level}</span><b>${esc(u.title)}</b>
    <span class="ks-cardmeta">教材 ${s.sections}/${s.totalSections}</span>
