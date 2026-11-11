@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1, viewport-fit=cover">
+<title>ことばステップ｜ホーム画面比較 A・B</title>
+<style>
+:root{font-family:ui-rounded,"Hiragino Kaku Gothic ProN","Yu Gothic",system-ui,-apple-system,sans-serif;color:#1f2d49;background:#eef1f9;font-synthesis:none}
+*{box-sizing:border-box}
+body{margin:0}
+button{font:inherit;cursor:pointer}
+button:focus-visible{outline:3px solid #9b8cff;outline-offset:3px}
+.sheet{max-width:990px;margin:0 auto;padding:24px 16px 50px}
+.sheet-header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+.sheet-header h1{font-size:21px;margin:0;font-weight:850;letter-spacing:-.035em}
+.sheet-header p{font-size:12px;color:#66738b;margin:6px 0 0}
+.samplebadge{background:#fff;border:1px solid #dfe4f1;border-radius:30px;padding:10px 14px;font-size:12px;color:#46536f}
+.compare{display:grid;grid-template-columns:repeat(2,390px);gap:26px;justify-content:center;align-items:start}
+.variant{min-width:0}
+.variant-head{display:flex;align-items:center;justify-content:space-between;margin:0 2px 11px}
+.variant-head h2{margin:0;font-weight:800;font-size:14px}
+.variant-head span{color:#6c7890;font-size:11px}
+.phone{width:390px;height:844px;position:relative;border:1px solid #dfe4f0;border-radius:32px;box-shadow:0 15px 45px rgba(37,49,96,.13);overflow:hidden;background:#f8faff}
+.screen{height:100%;overflow-y:auto;scrollbar-width:none;padding-bottom:85px}
+.screen::-webkit-scrollbar{display:none}
+.top{height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 20px 0 22px;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;font-size:16px;white-space:nowrap;font-weight:900;letter-spacing:-.07em}
+.brandmark{width:32px;height:32px;background:#5268df;color:#fff;border-radius:11px;display:grid;place-items:center;font-size:16px;font-weight:950;letter-spacing:0}
+.langbutton{display:flex;align-items:center;gap:7px;border:1px solid #e0e6f2;background:#fff;border-radius:13px;height:40px;padding:5px 10px;color:#35415d;font-size:12px;font-weight:800;box-shadow:0 1px 3px #1e315808}
+.langbutton svg.flag{width:26px;height:18px;flex:none;border-radius:2px}
+.langbutton .arr{font-size:15px;line-height:1;color:#71809d;margin-left:1px}
+.hero-a{margin:4px 18px 14px;border-radius:24px;padding:23px 20px 21px;min-height:318px;background:linear-gradient(127deg,#4766e4,#7562d8 76%,#8971df);color:white;box-shadow:0 10px 25px #5f69dc28;position:relative;overflow:hidden}
+.hero-a::after{content:"";position:absolute;border:1px solid #ffffff20;border-radius:50%;width:250px;height:250px;right:-150px;top:-115px;pointer-events:none}
+.eyebrow{font-size:11px;font-weight:800;letter-spacing:.04em;opacity:.93;margin-bottom:16px}
+.tagrow{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:10px}
+.a-tag{background:#ffffff25;border:1px solid #ffffff2e;border-radius:100px;padding:5px 9px;font-size:11px;font-weight:800;color:#fff}
+.hero-a h3{font-size:29px;line-height:1.29;letter-spacing:-.055em;margin:0 0 13px;font-weight:900;max-width:310px;min-height:53px}
+.a-progress{margin:0 0 17px}
+.a-progress-head{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#ecedff;margin:0 0 8px;font-weight:750}
+.track{height:7px;border-radius:99px;overflow:hidden;background:rgba(255,255,255,.25)}
+.track i{height:100%;display:block;border-radius:inherit;background:white;width:40%;transition:width .3s}
+.cta-a,.cta-b{width:100%;height:52px;display:flex;align-items:center;justify-content:center;gap:8px;border-radius:14px;font-size:15px;font-weight:900;letter-spacing:.005em}
+.cta-a{background:white;color:#485de1;border:0;box-shadow:0 4px 14px #212c7840}
+.cta-b{background:linear-gradient(100deg,#4f65e5,#7665d9);border:0;color:white;box-shadow:0 7px 18px #5269df30}
+.chev{font-size:20px;transform:translateY(-1px);font-weight:400}
+.lower{padding:0 18px}
+.practice{background:white;border:1px solid #e6eaf4;border-radius:19px;padding:16px 16px;display:flex;gap:12px;align-items:center;justify-content:space-between;width:100%;text-align:left;color:#253554;box-shadow:0 3px 12px rgba(42,55,97,.028)}
+.practice .practice-title{font-size:14px;font-weight:850;display:flex;align-items:center;gap:7px}
+.practice .practice-sub{font-size:11px;color:#79869b;margin-top:4px;line-height:1.4}
+.practice .bubble{height:33px;width:33px;border-radius:11px;background:#eef2ff;color:#6174e9;display:grid;place-items:center;font-size:18px}
+.practice .arrow{font-size:21px;color:#a0acc3}
+.section-title{font-size:13px;font-weight:870;margin:21px 3px 11px;color:#3a4766}
+.statrow{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat{background:white;border:1px solid #e6eaf4;border-radius:16px;padding:13px 15px}
+.stat strong{display:block;font-size:21px;font-weight:950;letter-spacing:-.05em;margin-top:4px}
+.stat small{color:#73809a;font-size:11px;font-weight:650}
+.settings{display:flex;justify-content:space-between;align-items:center;padding:15px 16px;margin-top:11px;background:transparent;border:1px solid #e5eaf3;border-radius:16px;width:100%;font-size:12px;font-weight:800;color:#60708c;text-align:left}
+.settings span:nth-child(2){font-size:19px;color:#abb7c9;font-weight:400}
+.bottom-nav{position:absolute;bottom:0;left:0;right:0;height:73px;background:#ffffffee;backdrop-filter:blur(12px);border-top:1px solid #e7eaf2;display:flex;align-items:center;justify-content:space-around;padding:0 12px 4px}
+.nav-item{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:4px;background:none;border:0;color:#8591a8;font-size:10px;font-weight:750;padding:5px 7px;min-width:64px}
+.nav-item .ni{font-size:20px;height:21px;line-height:20px}
+.nav-item.selected{color:#5166df}
+/* B: calm white first */
+.b .phone{background:#fff}
+.b .top{background:#fff}
+.hero-b{margin:6px 20px 17px;min-height:310px}
+.hero-b .eyebrow{color:#6a78a0;opacity:1;margin-bottom:18px}
+.hero-b .tagrow{margin-bottom:10px}
+.b-tag{background:#f0f2ff;border:1px solid #e9ecff;color:#5665ce;font-size:11px;font-weight:850;padding:6px 10px;border-radius:99px}
+.hero-b h3{font-size:32px;line-height:1.25;letter-spacing:-.06em;font-weight:950;color:#1c2a45;max-width:330px;margin:0 0 17px;min-height:54px}
+.b-progress{padding:15px 16px;background:#f8f9fd;border:1px solid #edf0f6;border-radius:15px;margin:0 0 16px}
+.b-progress-head{display:flex;justify-content:space-between;font-size:11px;font-weight:750;color:#566581;margin-bottom:9px}
+.b-progress .track{background:#e7eafa}
+.b-progress .track i{background:linear-gradient(90deg,#526be8,#8168de)}
+.b .lower{padding:0 20px}
+.b .practice{background:#fbfcff}
+.b .stat{background:#fff}
+.b .section-title{margin-top:21px}
+.note{font-size:12px;line-height:1.55;margin:12px 4px 0;color:#4b5973;max-width:390px}
+.note strong{color:#263753}
+.mode-toggle{display:flex;gap:6px}
+.mode-toggle button{background:#fff;border:1px solid #e1e6f1;border-radius:12px;padding:7px 10px;font-size:12px;font-weight:850;color:#52617c}
+.mode-toggle button.active{background:#596de1;color:#fff;border-color:#596de1}
+.langmenu{position:absolute;top:65px;right:16px;z-index:30;background:white;border:1px solid #e2e8f3;border-radius:16px;width:190px;box-shadow:0 14px 34px #202b5940;padding:7px}
+.langmenu button{display:flex;align-items:center;gap:10px;width:100%;border:0;background:transparent;border-radius:10px;padding:10px 9px;text-align:left;color:#263553;font-size:13px;font-weight:800}
+.langmenu button.active,.langmenu button:hover{background:#edf0ff}
+.langmenu button svg{width:30px;height:20px;border-radius:3px}
+.langmenu[hidden],.toast[hidden]{display:none}
+.toast{position:absolute;z-index:31;left:22px;right:22px;bottom:87px;background:#253556;color:white;font-size:12px;line-height:1.6;border-radius:14px;box-shadow:0 10px 22px #1b245850;padding:12px 16px;text-align:center}
+@media(max-width:865px){.sheet{padding:16px 0 28px}.sheet-header{padding:0 15px}.compare{display:flex;justify-content:flex-start;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:0;padding:0 calc((100vw - min(390px,100vw)) / 2) 18px;scrollbar-width:thin}.variant{scroll-snap-align:center;flex:0 0 390px}.variant-head{margin:0 10px 10px}.phone{border-radius:25px}.note{padding:0 6px}.sheet-header h1{font-size:19px}}
+@media(max-width:390px){.variant{flex-basis:390px}.compare{scroll-snap-type:x mandatory}}
+</style>
+</head>
+<body>
+<main class="sheet">
+  <header class="sheet-header">
+    <div><h1>ホーム画面 · 2案比較</h1><p>390px × 844px / どちらも同じ教材・進捗を表示</p></div>
+    <span id="data-status" class="samplebadge">同じサンプル学習データを表示中</span>
+  </header>
+  <div class="compare" id="compare">
+    <section class="variant a"><div class="variant-head"><h2>A案｜青紫ヘッダー</h2><span>継続学習を最優先</span></div><div class="phone"><div class="screen" id="screen-a"></div><div class="langmenu" hidden id="menu-a"></div><div class="toast" hidden id="toast-a"></div></div><p class="note"><strong>最初に目に入る：</strong>青紫の「次のレッスン」。<br><strong>次に押してほしい：</strong>白い「続きから学ぶ」。</p></section>
+    <section class="variant b"><div class="variant-head"><h2>B案｜白ベース</h2><span>教材名を主役に</span></div><div class="phone"><div class="screen" id="screen-b"></div><div class="langmenu" hidden id="menu-b"></div><div class="toast" hidden id="toast-b"></div></div><p class="note"><strong>最初に目に入る：</strong>大きなレッスン名。<br><strong>次に押してほしい：</strong>青紫の「続きから学ぶ」。</p></section>
+  </div>
+</main>
+<script>
+const COURSE={"en":[{"title":"あいさつと自己紹介","sections":["はじめての会話","I am と This is","主語と代名詞","身の回りのもの","短い質問と返事"]},{"title":"身近な物と日常","sections":["英語の基本語順","質問する・否定する","家族と所有","時間と曜日","食べ物と買い物"]},{"title":"昨日と明日の話","sections":["過去形で思い出を話す","今していることと予定","習慣と頻度","予定と約束","道案内と場所"]},{"title":"経験と説明","sections":["過去と今をつなぐ現在完了","比較と文をつなぐ言葉","過去形との違い","比較を詳しく話す","人と物を説明する"]},{"title":"意図と義務","sections":["can / should / must","ていねいなお願い","許可と能力の違い","助言を比べる","希望と計画"]},{"title":"原因と条件","sections":["理由と譲歩を区別","条件と結果をつなぐ","原因と結果","譲歩と対比","自分の意見を述べる"]},{"title":"過去を具体的に語る","sections":["過去の前に起きた出来事","行為を受ける側を主語に","受動態の時制","時間の前後関係","人の発言を伝える"]},{"title":"仮定して考える","sections":["今と異なる仮定","過去の後悔と推論","仮定法と現実","過去の条件を考える","推量の確かさ"]},{"title":"論理的に意見を述べる","sections":["根拠から結論へ","反論と限定","主張と証拠","反論を公平に扱う","レポートの文章"]},{"title":"複雑な内容を読み解く","sections":["省略と倒置を見抜く","含意と文脈の判断","倒置で強調する","断定を避ける表現","高度な読解の論理"]}],"ko":[{"title":"ハングルとあいさつ","sections":["ハングルの読み方","自己紹介をする","基本子音の形","基本母音を覚える","すぐ使える言葉"]},{"title":"助詞と基本の動詞","sections":["韓国語の基本語順","動詞を丁寧に言う","主題と主語","位置と存在","否定の作り方"]},{"title":"時制と予定","sections":["過去と現在進行","未来と予定を話す","過去の出来事","未来と予定","数字と時間"]},{"title":"希望と理由","sections":["希望と必要性","理由と依頼","敬語の基本","理由をつなぐ","対比と逆接"]},{"title":"条件と禁止","sections":["条件を作る -면","可能・禁止・不要","許可と禁止","義務と必要","経験を伝える"]},{"title":"敬語と引用","sections":["尊敬表現 -시-","聞いた内容を伝える","現実的な条件","推量と可能性","順序を説明する"]},{"title":"経験と変化","sections":["経験 -아/어 본 적 있다","状態が変わる -게 되다","間接話法の入口","受動の表現","名詞化と説明"]},{"title":"仮定と譲歩","sections":["推測と反実仮想","逆接 -더라도 / -지만","仮定的な想像","後悔と振り返り","譲歩を伝える"]},{"title":"複雑な説明","sections":["〜という点・はず","形式ばった説明と対比","証拠と解釈","反対意見と限定","文章の構成"]},{"title":"高度な文章理解","sections":["確実性の違い","長文の論理関係を追う","複雑な条件","慎重な断定","高度な文脈理解"]}],"zh":[{"title":"発音とあいさつ","sections":["声調とピンイン","是 と自己紹介","ピンインと声調","人称代名詞","質問の作り方"]},{"title":"動詞と疑問文","sections":["語順は主語・動詞・目的語","吗 と疑問詞","是・有・在","所有を表す 的","数字と量詞"]},{"title":"時間と進行","sections":["完了の 了","進行中を示す 在 / 正在","完了を表す 了","否定の 不 と 没","時を表す語"]},{"title":"比較と経験","sections":["比較文を作る","経験の 过 と可能","比較の 比","経験の 过","方向と移動"]},{"title":"条件と理由","sections":["如果…就…","因为…所以… / 虽然…但是…","会・能・可以","義務と助言","ていねいな依頼"]},{"title":"把構文と補語","sections":["把構文で対象を前に","結果補語と程度補語","理由と結果","条件と結果","逆接と対照"]},{"title":"推測と伝聞","sections":["可能性は 可能 / 应该 / 也许","他者の発言を説明","把構文の基本","被構文の基本","結果補語を理解する"]},{"title":"譲歩と選択","sections":["尽管 / 即使","宁愿 / 与其","既然で理由を前提に","譲歩の 即使","仮定の 要是"]},{"title":"根拠を述べる","sections":["只有…才… / 只要…就…","依据と结论","根拠のある主張","論点を比較する","報告の構成"]},{"title":"高度な読解","sections":["断定と可能性を分ける","譲歩と論証の流れ","高度な条件表現","確実性を調整する","文章の含意を読み取る"]}]};
+const names={en:'英語',ko:'韓国語',zh:'中国語'};
+const FLAG={
+ en:'<svg class="flag" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="40" fill="#012169"/><path d="M-5 -4L65 44M65 -4L-5 44" stroke="white" stroke-width="11"/><path d="M-5 -4L65 44M65 -4L-5 44" stroke="#c8102e" stroke-width="4"/><path d="M30 0V40M0 20H60" stroke="white" stroke-width="14"/><path d="M30 0V40M0 20H60" stroke="#c8102e" stroke-width="7"/></svg>',
+ ko:'<svg class="flag" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="40" fill="#fff"/><path d="M30 11a9 9 0 0 1 0 18a4.5 4.5 0 0 0 0-9a4.5 4.5 0 0 1 0-9z" fill="#cd2e3a"/><path d="M30 29a9 9 0 0 1 0-18a4.5 4.5 0 0 0 0 9a4.5 4.5 0 0 1 0 9z" fill="#0047a0"/><path d="M11 10l2-3m1 6l2-3m1 6l2-3M41 26l2-3m1 6l2-3m1 6l2-3M41 13l-2-3m5 6l-2-3m5 6l-2-3M11 27l2-3m1 6l2-3m1 6l2-3" stroke="#111" stroke-width="2.2"/></svg>',
+ zh:'<svg class="flag" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="40" fill="#de2910"/><path d="M12 6l1.9 5.8H20l-4.9 3.6l1.9 5.8l-5-3.6l-5 3.6l1.9-5.8L4 11.8h6.1z" fill="#ffde00"/><g fill="#ffde00"><circle cx="25" cy="6" r="2"/><circle cx="29" cy="12" r="2"/><circle cx="28" cy="20" r="2"/><circle cx="24" cy="26" r="2"/></g></svg>'
+};
+const key='kotoba_web_v3';
+let saved=null;
+try{saved=JSON.parse(localStorage.getItem(key)||'null')}catch(e){}
+const hasSaved=!!saved&&names[saved.lang];
+let lang=hasSaved?saved.lang:'en';
+function getProgress(language){
+ if(!hasSaved){return{level:2,done:2,total:5,score:'82%',mastered:1,sample:true}}
+ const hist=Array.isArray(saved.history)?saved.history:[];
+ const units=COURSE[language];
+ const learned=saved.learned?.[language]||{};
+ let totalComplete=0;
+ let levels=units.map((u,idx)=>{
+  const level=idx+1;
+  const records=hist.filter(h=>h.lang===language&&!h.skipped&&h.category!=='word'&&h.level===level);
+  const latest=records.slice(-20);
+  const unique=new Set(records.map(h=>h.id)).size;
+  const skills=new Set(records.map(h=>h.type)).size;
+  const productive=new Set(records.filter(h=>h.type==='w'||(h.type==='g'&&h.mode==='type')||h.type==='s').map(h=>h.id)).size;
+  const done=Object.values(learned[level]||{}).filter(v=>v?.passed).length;
+  const recent=latest.length?latest.filter(h=>h.correct).length/latest.length:null;
+  const mastered=done>=u.sections.length&&unique>=10&&skills>=3&&productive>=(level>=4?4:2)&&recent!==null&&recent>=.8&&latest.length>=10;
+  if(mastered)totalComplete++;
+  return{done:Math.min(done,u.sections.length),mastered,recent};
+ });
+ const n=levels.findIndex(x=>!x.mastered);
+ const idx=n<0?9:n;
+ const current=levels[idx];
+ const all=hist.filter(h=>h.lang===language&&!h.skipped&&h.category!=='word');
+ const last=all.slice(-30);
+ const accuracy=last.length?Math.round(last.filter(h=>h.correct).length/last.length*100)+'%':'—';
+ return{level:idx+1,done:current.done,total:units[idx].sections.length,score:accuracy,mastered:totalComplete,sample:false};
+}
+function htmlescape(x){return String(x).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function calc(){const p=getProgress(lang);const unit=COURSE[lang][p.level-1];const next=Math.min(p.done,p.total-1);return {...p,unit:unit.title,sect:unit.sections[next],next:next+1,pct:Math.round(100*p.done/p.total)}}
+function header(){return `<header class="top"><div class="brand"><div class="brandmark">こ</div>ことばステップ</div><button class="langbutton" data-action="lang" aria-label="学習言語を切り替える">${FLAG[lang]} <span>${names[lang]}</span><span class="arr">⌄</span></button></header>`}
+function meta(p,variant){let cls=variant==='a'?'a-tag':'b-tag';return `<div class="tagrow"><span class="${cls}">${htmlescape(names[lang])} · Lv.${p.level}</span><span class="${cls}">セクション ${p.next}/${p.total}</span></div>`}
+function progress(p,which){return `<div class="${which}-progress"><div class="${which}-progress-head"><span>${htmlescape(p.unit)}</span><span>完了 ${p.done} / ${p.total}</span></div><div class="track"><i style="width:${p.pct}%"></i></div></div>`}
+function below(p){return `<div class="lower"><button class="practice" data-action="preview" data-label="同じレベルのトレーニング" aria-label="トレーニングへ"><div class="bubble">✎</div><div style="flex:1"><div class="practice-title">トレーニングで確認</div><div class="practice-sub">Lv.${p.level} の問題を解く</div></div><span class="arrow">›</span></button><div class="section-title">学習の記録</div><div class="statrow"><div class="stat"><small>修了レベル</small><strong>${p.mastered}<span style="font-size:11px;font-weight:750;color:#8793a8"> / 10</span></strong></div><div class="stat"><small>直近の正答率</small><strong>${p.score}</strong></div></div><button class="settings" data-action="preview" data-label="設定"><span>⚙ &nbsp;設定・学習データ</span><span>›</span></button></div>`}
+function nav(){return `<nav class="bottom-nav" aria-label="主なページ"><button class="nav-item selected" data-action="preview" data-label="ホーム"><span class="ni">⌂</span>ホーム</button><button class="nav-item" data-action="preview" data-label="レッスン"><span class="ni">▤</span>レッスン</button><button class="nav-item" data-action="preview" data-label="練習"><span class="ni">◎</span>練習</button><button class="nav-item" data-action="preview" data-label="成長"><span class="ni">▥</span>成長</button></nav>`}
+function render(){const p=calc();const a=`${header()}<section class="hero-a"><div class="eyebrow">今日のレッスン</div>${meta(p,'a')}<h3>${htmlescape(p.sect)}</h3>${progress(p,'a')}<button class="cta-a" data-action="preview" data-label="続きから学ぶ">続きから学ぶ <span class="chev">→</span></button></section>${below(p)}${nav()}`;
+const b=`${header()}<section class="hero-b"><div class="eyebrow">今日のレッスン</div>${meta(p,'b')}<h3>${htmlescape(p.sect)}</h3>${progress(p,'b')}<button class="cta-b" data-action="preview" data-label="続きから学ぶ">続きから学ぶ <span class="chev">→</span></button></section>${below(p)}${nav()}`;
+document.getElementById('screen-a').innerHTML=a;document.getElementById('screen-b').innerHTML=b;
+document.getElementById('data-status').textContent=p.sample?'比較用の共通サンプル：英語・Lv.2・2/5':`${names[lang]}の保存済み学習記録を両案に表示中`;
+for(const v of ['a','b']){let menu=document.getElementById('menu-'+v);menu.hidden=true;menu.innerHTML=Object.entries(names).map(([code,label])=>`<button data-action="switch" data-lang="${code}" class="${code===lang?'active':''}">${FLAG[code]}${label}${code===lang?' ✓':''}</button>`).join('');}
+}
+function toast(source,text){let el=document.getElementById('toast-'+source);el.textContent=text;el.hidden=false;clearTimeout(el._tid);el._tid=setTimeout(()=>el.hidden=true,2600)}
+document.addEventListener('click',ev=>{const btn=ev.target.closest('[data-action]');if(!btn){if(!ev.target.closest('.langmenu'))document.querySelectorAll('.langmenu').forEach(x=>x.hidden=true);return;}const variant=btn.closest('.variant')?.classList.contains('a')?'a':'b';switch(btn.dataset.action){case 'lang':{let menu=document.getElementById('menu-'+variant),open=menu.hidden;document.querySelectorAll('.langmenu').forEach(x=>x.hidden=true);menu.hidden=!open;break;}case 'switch':lang=btn.dataset.lang;render();break;case 'preview':toast(variant,'デザイン比較用の画面です。「'+btn.dataset.label+'」の動作は採用後に接続します。');break;}});
+render();
+</script>
+</body>
+</html>
